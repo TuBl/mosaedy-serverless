@@ -36,8 +36,15 @@ type SupabaseSession = {
 const ImageGen: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
   event
 ) => {
-  const { prompt, session }: { prompt: string; session: SupabaseSession } =
-    event.body as { prompt: string; session: SupabaseSession };
+  const {
+    prompt,
+    session,
+    n,
+  }: { prompt: string; session: SupabaseSession; n?: number } = event.body as {
+    prompt: string;
+    session: SupabaseSession;
+    n?: number;
+  };
 
   if (!prompt) {
     return formatJSONResponse(
