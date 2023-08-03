@@ -75,10 +75,14 @@ const ImageGen: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
     );
   }
 
+  let variationsCount = 1;
+  if (n && Number(n) > 0 && Number(n) <= 4) {
+    variationsCount = Number(n);
+  }
   try {
     const { data } = await openai.createImage({
       prompt,
-      n: 1,
+      n: variationsCount,
       size: "1024x1024",
     });
 
