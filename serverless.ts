@@ -50,7 +50,7 @@ const serverlessConfiguration: AWS = {
           },
         },
       ],
-    }
+    },
   },
   package: { individually: true },
   custom: {
